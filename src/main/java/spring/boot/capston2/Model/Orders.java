@@ -65,4 +65,9 @@ public class Orders {
     @ManyToMany
     @JsonIgnore
     private Set<Plants> plants;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "users_id" , referencedColumnName = "id")
+    private Users users;
 }
