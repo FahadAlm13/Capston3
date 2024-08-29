@@ -61,6 +61,9 @@ public class ConsultantService {
         if(consultant==null) {
             throw new ApiException("consultant id not found");
         }
+         if (!consultation.getConsultant().equals(consultant)) {
+            throw new ApiException("Consultant is not the same");
+        }
 
         if (!consultation.getStatus().equalsIgnoreCase("PENDING")) {
             throw new ApiException("Consultation is not in Pending status");
@@ -80,6 +83,9 @@ public class ConsultantService {
         Consultation consultation=consultationRepository.findConsultationById(bookingId);
         if(consultant==null || consultation==null) {
             throw new ApiException("consultant or consultation not found");
+        }
+         if (!consultation.getConsultant().equals(consultant)) {
+            throw new ApiException("Consultant is not the same");
         }
         if(consultation.getStatus().equalsIgnoreCase("Completed")){
             throw new ApiException("It is Completed.");
@@ -104,6 +110,9 @@ public class ConsultantService {
         Consultation consultation=consultationRepository.findConsultationById(consultationId);
         if(consultant==null||consultation==null){
             throw new ApiException("consultant or consultation not found");
+        }
+         if (!consultation.getConsultant().equals(consultant)) {
+            throw new ApiException("Consultant is not the same");
         }
         if(consultation.getStatus().equalsIgnoreCase("Canceled")){
             throw new ApiException("it is already canceled");
