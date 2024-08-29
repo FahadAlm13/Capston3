@@ -22,7 +22,6 @@ public class Nurseries {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // farmers_id
 
     @NotEmpty(message = "Name shouldn't be empty ")
     @Column(columnDefinition = "varchar(30) not null")
@@ -39,6 +38,10 @@ public class Nurseries {
     @NotEmpty(message = "typeOfPlants shouldn't be empty ")
     @Column(columnDefinition = "varchar(30) not null")
     private String typeOfPlants;
+
+    @NotEmpty(message = "commercialRegisterNo should not be Empty!")
+    @Column(columnDefinition = "varchar(50) not null unique")
+    private String commercialRegisterNo;
 
     @Column(columnDefinition = "datetime default (current_timestamp)")
     private LocalDate registration_date;
